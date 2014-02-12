@@ -25,20 +25,20 @@ override_dh_auto_build:
 	make test
 
 	# build php bindings
-	cd php; \
-	phpize5; \
-	mkdir build-php5; \
-	cd build-php5; \
-	CC="$(CC)" CFLAGS="$(CFLAGS) -I../.. -L../.. -L../../.libs" \
-	../configure \
-	    --cache-file=../config.cache \
-	    --enable-uuid \
-	    --disable-static \
-	    --with-php-config=php-config5; \
-	make; \
-	cd ..; \
-	LD_LIBRARY_PATH=`pwd`/../.libs \
-	php5 -q -d "safe_mode=0" -d "extension=uuid.so" -d "extension_dir=./build-php5/modules" uuid.ts 5
+	#cd php; \
+	#phpize5; \
+	#mkdir build-php5; \
+	#cd build-php5; \
+	#CC="$(CC)" CFLAGS="$(CFLAGS) -I../.. -L../.. -L../../.libs" \
+	#../configure \
+	#    --cache-file=../config.cache \
+	#    --enable-uuid \
+	#    --disable-static \
+	#    --with-php-config=php-config5; \
+	#make; \
+	#cd ..; \
+	#LD_LIBRARY_PATH=`pwd`/../.libs \
+	#php5 -q -d "safe_mode=0" -d "extension=uuid.so" -d "extension_dir=./build-php5/modules" uuid.ts 5
 
 override_dh_auto_install:
 	dh_auto_install
@@ -47,10 +47,10 @@ override_dh_auto_install:
 	chrpath debian/libossp-uuid-perl/usr/lib/perl5/auto/OSSP/uuid/uuid.so && \
 	chrpath -d debian/libossp-uuid-perl/usr/lib/perl5/auto/OSSP/uuid/uuid.so
 
-	cd php/build-php5; make install INSTALL_ROOT=$(CURDIR)/debian/php5-uuid
-	chmod -x debian/php5-uuid/usr/lib/php5/*/uuid.so
-	chrpath debian/php5-uuid/usr/lib/php5/*/uuid.so && \
-	chrpath -d debian/php5-uuid/usr/lib/php5/*/uuid.so
+	#cd php/build-php5; make install INSTALL_ROOT=$(CURDIR)/debian/php5-uuid
+	#chmod -x debian/php5-uuid/usr/lib/php5/*/uuid.so
+	#chrpath debian/php5-uuid/usr/lib/php5/*/uuid.so && \
+	#chrpath -d debian/php5-uuid/usr/lib/php5/*/uuid.so
 
 override_dh_install:
 	dh_install
@@ -60,12 +60,12 @@ override_dh_install:
 
 	install -D -m 644 debian/tmp/usr/lib/pkgconfig/uuid.pc debian/libossp-uuid-dev/usr/lib/pkgconfig/ossp-uuid.pc
 
-override_dh_gencontrol:
-	dh_gencontrol -- -Vphp5-uuid:Depends=phpapi-$(shell php-config5 --phpapi)
+#override_dh_gencontrol:
+#	dh_gencontrol -- -Vphp5-uuid:Depends=phpapi-$(shell php-config5 --phpapi)
 
 override_dh_auto_clean:
 	cd perl; test -f Makefile && touch Makefile && make distclean || true
-	rm -rf php/build-php5
+	#rm -rf php/build-php5
 	cd php; phpize --clean || true
 	dh_auto_clean
 	rm -f config.sub config.guess

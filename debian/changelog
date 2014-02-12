@@ -1,3 +1,26 @@
+ossp-uuid (1.6.2-1.3) unstable; urgency=high
+
+  * Non-maintainer upload
+  * Drop dependency on php5-dev an php5-cli to make transition tracker
+    less confused
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 21 Mar 2012 15:31:01 +0100
+
+ossp-uuid (1.6.2-1.2) unstable; urgency=high
+
+  * Disable building of php5-uuid until it's fixed in upstream
+    (Closes: #656482)
+
+ -- Ondřej Surý <ondrej@debian.org>  Wed, 14 Mar 2012 09:11:50 +0100
+
+ossp-uuid (1.6.2-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * 0004-fix-data-uuid-from-string.patch: Support dash-less args to
+    from_string in uuid_compat.pm. (Closes: #635607)
+
+ -- Tim Retout <diocles@debian.org>  Tue, 26 Jul 2011 12:09:04 +0100
+
 ossp-uuid (1.6.2-1) unstable; urgency=low
 
   * New upstream release. (Closes: #452780)
