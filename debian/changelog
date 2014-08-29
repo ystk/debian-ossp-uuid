@@ -1,3 +1,35 @@
+ossp-uuid (1.6.2-1.5) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Bump standard version to 3.9.5.
+  * Mark the uuid binary package as Multi-Arch: foreign. Closes: #688941.
+  * Link the shared libraries with depending libraries. Closes: #689142.
+  * libossp-uuid-dev: Don't install the libossp-uuid.la file anymore.
+  * Build using dpkg-buildflags.
+  * Convert the library packages to Multi-Arch. Closes: #688943.
+  * Link libraries with LDFLAGS.
+  * Only run the tests for native builds.
+
+  [ Paolo Schiro ]
+  * libossp-uuid-perl: create_bin method missing in uuid_compat.pm.
+    Closes: #734506.
+
+  [ William Grant ]
+  * debian/rules: Build with dh_autoreconf for new libtool, but run aclocal
+    first to convince autoreconf that our aclocal is normal.
+  * debian/patches/autoreconf-ify.patch: Fix autotoolery to cope with
+    autoreconf. Move aclocal.m4 to acincludes.m4 so we can use aclocal for
+    libtool, and stop including the local copy of libtool.m4.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 05 Aug 2014 16:09:08 +0200
+
+ossp-uuid (1.6.2-1.4) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Don't hardcode /usr/lib/perl5 in debian/rules. (Closes: #752803)
+
+ -- Niko Tyni <ntyni@debian.org>  Wed, 16 Jul 2014 23:22:24 +0300
+
 ossp-uuid (1.6.2-1.3) unstable; urgency=high
 
   * Non-maintainer upload

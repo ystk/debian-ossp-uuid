@@ -1,0 +1,13 @@
+Index: ossp-uuid-1.6.2/Makefile.in
+===================================================================
+--- ossp-uuid-1.6.2.orig/Makefile.in	2012-09-29 20:53:08.000000000 +0400
++++ ossp-uuid-1.6.2/Makefile.in	2012-09-29 21:06:24.183005853 +0400
+@@ -112,7 +112,7 @@
+ 	@$(LIBTOOL) --mode=compile $(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+ 
+ $(LIB_NAME): $(LIB_OBJS)
+-	@$(LIBTOOL) --mode=link $(CC) -o $(LIB_NAME) $(LIB_OBJS) -rpath $(libdir) \
++	@$(LIBTOOL) --mode=link $(CC) -o $(LIB_NAME) $(LIB_OBJS) $(LIBS) -rpath $(libdir) \
+ 	    -version-info `$(SHTOOL) version -l c -d libtool $(S)/uuid_vers.h`
+ 
+ $(DCE_NAME): $(DCE_OBJS)

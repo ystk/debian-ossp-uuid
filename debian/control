@@ -2,14 +2,16 @@ Source: ossp-uuid
 Maintainer: Marco Nenciarini <mnencia@debian.org>
 Section: libs
 Priority: optional
-Standards-Version: 3.8.4
-Build-Depends: debhelper (>= 7.0.50~), autotools-dev, libtool, perl (>= 5.8), chrpath
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 7.0.50~), dh-autoreconf, libtool, perl (>= 5.8), chrpath
 Homepage: http://www.ossp.org/pkg/lib/uuid/
 Vcs-Git: git://git.debian.org/git/collab-maint/ossp-uuid.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/ossp-uuid.git
 
 Package: libossp-uuid16
 Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: uuid
 Description: OSSP uuid ISO-C and C++ - shared library
@@ -31,6 +33,7 @@ Description: OSSP uuid ISO-C and C++ - shared library
 
 Package: libossp-uuid-dev
 Architecture: any
+Multi-Arch: same
 Section: libdevel
 Depends: libossp-uuid16 (= ${binary:Version}), ${misc:Depends}
 Description: OSSP uuid ISO-C and C++ - headers and static libraries
@@ -52,10 +55,11 @@ Description: OSSP uuid ISO-C and C++ - headers and static libraries
 
 Package: uuid
 Architecture: any
+Multi-Arch: foreign
 Section: utils
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: libossp-uuid11
-Description: the Universally Unique Identifier Command-Line Tool
+Description: Universally Unique Identifier Command-Line Tool
  OSSP uuid is an ISO-C and Perl application programming interface (API)
  and corresponding command line interface (CLI) for the generation of
  DCE 1.1 and ISO/IEC 11578:1996 compliant Universally Unique Identifier

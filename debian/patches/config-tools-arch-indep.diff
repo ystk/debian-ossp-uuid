@@ -1,0 +1,37 @@
+Index: b/uuid.pc.in
+===================================================================
+--- a/uuid.pc.in
++++ b/uuid.pc.in
+@@ -30,13 +30,12 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+ includedir=${prefix}/include
+-libdir=${exec_prefix}/lib
+ 
+ Name: OSSP uuid
+ Description: Universally Unique Identifier (UUID) Library
+ Version: @UUID_VERSION_RAW@
+ URL: http://www.ossp.org/pkg/lib/uuid/
+ Cflags: -I${includedir}/ossp
+-Libs: -L${libdir} -lossp-uuid
++Libs: -lossp-uuid
+ Libs.private: @LIBS@
+ 
+Index: b/uuid-config.in
+===================================================================
+--- a/uuid-config.in
++++ b/uuid-config.in
+@@ -38,7 +38,12 @@ datarootdir="@datarootdir@"
+ uuid_prefix="$prefix"
+ uuid_exec_prefix="$exec_prefix"
+ uuid_bindir="@bindir@"
+-uuid_libdir="@libdir@"
++uuid_libdir="/usr/lib"
++if [ -n "$DEB_HOST_MULTIARCH" ]; then
++  uuid_libdir="/usr/lib/$DEB_HOST_MULTIARCH"
++elif [ -n "$DEB_HOST_ARCH" ] && which dpkg-architecture >/dev/null 2>&1; then
++  uuid_libdir="/usr/lib/$(dpkg-architecture -a$DEB_HOST_ARCH -qDEB_HOST_MULTIARCH)"
++fi
+ uuid_includedir="@includedir@"
+ uuid_mandir="@mandir@"
+ uuid_datadir="@datadir@"

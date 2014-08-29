@@ -1,0 +1,15 @@
+--- a/perl/uuid_compat.pm.orig	2014-01-07 18:24:54.106182532 +0100
++++ b/perl/uuid_compat.pm	2014-01-07 18:25:29.021697718 +0100
+@@ -159,6 +159,12 @@
+     return $self->to_b64string($self->create);
+ }
+ 
++sub create_bin {
++    my ($self) = @_;
++    return $self->create($self);
++}
++
++
+ sub create_from_name_str {
+     my $self = shift;
+     return $self->to_string($self->create_from_name(@_));

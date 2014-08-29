@@ -2,3 +2,8 @@
 0002-uuid-preserve-m-option-status-in-v-option-handling.patch
 0003-Fix-whatis-entries.patch
 0004-fix-data-uuid-from-string.patch
+autoreconf-ify.patch
+dyson-link-library-with-libs.patch
+config-tools-arch-indep.diff
+link-with-ldflags.diff
+uuid_compat.pm.patch
